@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semester 1 SGPA Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Semester 1 SGPA Calculator</h1>
+</header>
+
+<main>
+    <div class="form-container">
+        <form id="sem1Form">
+            <div class="subject">
+                <label for="LAC">LAC (4 Credits):</label>
+                <input type="number" id="LAC" name="LAC" required>
+            </div>
+            <div class="subject">
+                <label for="AP">AP (3 Credits):</label>
+                <input type="number" id="AP" name="AP" required>
+            </div>
+            <div class="subject">
+                <label for="CPP">CPP (3 Credits):</label>
+                <input type="number" id="CPP" name="CPP" required>
+            </div>
+            <div class="subject">
+                <label for="ECM">ECM (3 Credits):</label>
+                <input type="number" id="ECM" name="ECM" required>
+            </div>
+            <div class="subject">
+                <label for="DTI">DTI (1 Credit):</label>
+                <input type="number" id="DTI" name="DTI" required>
+            </div>
+            <div class="subject">
+                <label for="IKS">IKS (2 Credits):</label>
+                <input type="number" id="IKS" name="IKS" required>
+            </div>
+            <div class="subject">
+                <label for="APLab">AP Lab (1 Credit):</label>
+                <input type="number" id="APLab" name="APLab" required>
+            </div>
+            <div class="subject">
+                <label for="CPPLab">CPP Lab (1 Credit):</label>
+                <input type="number" id="CPPLab" name="CPPLab" required>
+            </div>
+            <div class="subject">
+                <label for="ECMLab">ECM Lab (1 Credit):</label>
+                <input type="number" id="ECMLab" name="ECMLab" required>
+            </div>
+            <div class="subject">
+                <label for="DTILab">DTI Lab (1 Credit):</label>
+                <input type="number" id="DTILab" name="DTILab" required>
+            </div>
+
+            <button type="button" onclick="calculateSGPA('sem1')">Calculate SGPA</button>
+        </form>
+        <div id="sem1Result"></div>
+        
+        <!-- Back to Home Button -->
+        <button onclick="window.location.href='index.html'">Back to Home</button>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 SGPA Calculator</p>
+</footer>
+
+<script src="scripts.js"></script>
+
+</body>
+</html>

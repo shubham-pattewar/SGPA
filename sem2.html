@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGPA Calculator - Semester 2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>SGPA Calculator - Semester 2</h1>
+    </header>
+
+    <div class="form-container">
+        <h2>ENTER MARKS for Semester 2</h2>
+        <form id="sem2Form">
+            <div class="subject">
+                <label for="DET">DET (Out of 100)</label>
+                <input type="number" id="DET" name="DET" required>
+            </div>
+            <div class="subject">
+                <label for="AC">AC (Out of 100)</label>
+                <input type="number" id="AC" name="AC" required>
+            </div>
+            <div class="subject">
+                <label for="EEE">EEE (Out of 100)</label>
+                <input type="number" id="EEE" name="EEE" required>
+            </div>
+            <div class="subject">
+                <label for="CAD">CAD (Out of 100)</label>
+                <input type="number" id="CAD" name="CAD" required>
+            </div>
+            <div class="subject">
+                <label for="PC">PC (Out of 25)</label>
+                <input type="number" id="PC" name="PC" required>
+            </div>
+            <div class="subject">
+                <label for="ACLab">AC Lab (Out of 25)</label>
+                <input type="number" id="ACLab" name="ACLab" required>
+            </div>
+            <div class="subject">
+                <label for="EEELab">EEE Lab (Out of 25)</label>
+                <input type="number" id="EEELab" name="EEELab" required>
+            </div>
+            <div class="subject">
+                <label for="CADLab">CAD Lab (Out of 25)</label>
+                <input type="number" id="CADLab" name="CADLab" required>
+            </div>
+            <div class="subject">
+                <label for="PCLab">PC Lab (Out of 25)</label>
+                <input type="number" id="PCLab" name="PCLab" required>
+            </div>
+            <div class="subject">
+                <label for="LLC">LLC (Out of 50)</label>
+                <input type="number" id="LLC" name="LLC" required>
+            </div>
+            <div class="subject">
+                <label for="PCC">PCC (Out of 50)</label>
+                <input type="number" id="PCC" name="PCC" required>
+            </div>
+
+            <div class="button-container">
+                <button type="button" onclick="calculateSGPA('sem2')">Calculate SGPA</button>
+                <button id="backToHome" onclick="window.location.href='index.html'">Back to Home</button>
+            </div>
+        </form>
+
+        <div id="sem2Result"></div>
+    </div>
+
+
+    <script src="scripts.js"></script>
+</body>
+</html>
