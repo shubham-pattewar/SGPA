@@ -5,69 +5,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGPA Calculator - Semester 2</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>SGPA Calculator - Semester 2</h1>
-    </header>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-calculator"></i>
+                <h1>SGPA Calculator - Semester 2</h1>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 50%;"></div>
+            </div>
+        </header>
 
-    <div class="form-container">
-        <h2>ENTER MARKS for Semester 2</h2>
-        <form id="sem2Form">
-            <div class="subject">
-                <label for="DET">DET (Out of 100)</label>
-                <input type="number" id="DET" name="DET" required>
+        <div class="form-container">
+            <div class="form-header">
+                <h2><i class="fas fa-pen"></i> ENTER MARKS for Semester 2</h2>
+                <div class="info-tooltip">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="tooltip-text">Enter your marks out of the maximum shown for each subject</span>
+                </div>
             </div>
-            <div class="subject">
-                <label for="AC">AC (Out of 100)</label>
-                <input type="number" id="AC" name="AC" required>
-            </div>
-            <div class="subject">
-                <label for="EEE">EEE (Out of 100)</label>
-                <input type="number" id="EEE" name="EEE" required>
-            </div>
-            <div class="subject">
-                <label for="CAD">CAD (Out of 100)</label>
-                <input type="number" id="CAD" name="CAD" required>
-            </div>
-            <div class="subject">
-                <label for="PC">PC (Out of 25)</label>
-                <input type="number" id="PC" name="PC" required>
-            </div>
-            <div class="subject">
-                <label for="ACLab">AC Lab (Out of 25)</label>
-                <input type="number" id="ACLab" name="ACLab" required>
-            </div>
-            <div class="subject">
-                <label for="EEELab">EEE Lab (Out of 25)</label>
-                <input type="number" id="EEELab" name="EEELab" required>
-            </div>
-            <div class="subject">
-                <label for="CADLab">CAD Lab (Out of 25)</label>
-                <input type="number" id="CADLab" name="CADLab" required>
-            </div>
-            <div class="subject">
-                <label for="PCLab">PC Lab (Out of 25)</label>
-                <input type="number" id="PCLab" name="PCLab" required>
-            </div>
-            <div class="subject">
-                <label for="LLC">LLC (Out of 50)</label>
-                <input type="number" id="LLC" name="LLC" required>
-            </div>
-            <div class="subject">
-                <label for="PCC">PCC (Out of 50)</label>
-                <input type="number" id="PCC" name="PCC" required>
-            </div>
+            
+            <form id="sem2Form">
+                <div class="subject-group">
+                    <div class="subject">
+                        <label for="DET">DET (Out of 100)</label>
+                        <div class="input-container">
+                            <input type="number" id="DET" name="DET" min="0" max="100" required>
+                            <span class="input-suffix">/100</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="AC">AC (Out of 100)</label>
+                        <div class="input-container">
+                            <input type="number" id="AC" name="AC" min="0" max="100" required>
+                            <span class="input-suffix">/100</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="EEE">EEE (Out of 100)</label>
+                        <div class="input-container">
+                            <input type="number" id="EEE" name="EEE" min="0" max="100" required>
+                            <span class="input-suffix">/100</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="CAD">CAD (Out of 100)</label>
+                        <div class="input-container">
+                            <input type="number" id="CAD" name="CAD" min="0" max="100" required>
+                            <span class="input-suffix">/100</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="PC">PC (Out of 25)</label>
+                        <div class="input-container">
+                            <input type="number" id="PC" name="PC" min="0" max="25" required>
+                            <span class="input-suffix">/25</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subject-group">
+                    <div class="subject">
+                        <label for="ACLab">AC Lab (Out of 25)</label>
+                        <div class="input-container">
+                            <input type="number" id="ACLab" name="ACLab" min="0" max="25" required>
+                            <span class="input-suffix">/25</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="EEELab">EEE Lab (Out of 25)</label>
+                        <div class="input-container">
+                            <input type="number" id="EEELab" name="EEELab" min="0" max="25" required>
+                            <span class="input-suffix">/25</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="CADLab">CAD Lab (Out of 25)</label>
+                        <div class="input-container">
+                            <input type="number" id="CADLab" name="CADLab" min="0" max="25" required>
+                            <span class="input-suffix">/25</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="PCLab">PC Lab (Out of 25)</label>
+                        <div class="input-container">
+                            <input type="number" id="PCLab" name="PCLab" min="0" max="25" required>
+                            <span class="input-suffix">/25</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="LLC">LLC (Out of 50)</label>
+                        <div class="input-container">
+                            <input type="number" id="LLC" name="LLC" min="0" max="50" required>
+                            <span class="input-suffix">/50</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="PCC">PCC (Out of 50)</label>
+                        <div class="input-container">
+                            <input type="number" id="PCC" name="PCC" min="0" max="50" required>
+                            <span class="input-suffix">/50</span>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="button-container">
-                <button type="button" onclick="calculateSGPA('sem2')">Calculate SGPA</button>
-                <button id="backToHome" onclick="window.location.href='index.html'">Back to Home</button>
-            </div>
-        </form>
+                <div class="button-container">
+                    <button type="button" class="calculate-btn" onclick="calculateSGPA('sem2')">
+                        <i class="fas fa-calculator"></i> Calculate SGPA
+                    </button>
+                    <button id="backToHome" class="home-btn" onclick="window.location.href='index.html'">
+                        <i class="fas fa-home"></i> Back to Home
+                    </button>
+                </div>
+            </form>
 
-        <div id="sem2Result"></div>
+            <div id="sem2Result" class="result-container"></div>
+        </div>
     </div>
-
 
     <script src="scripts.js"></script>
 </body>
