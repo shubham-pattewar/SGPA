@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGPA Calculator - Semester 4</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-calculator"></i>
+                <h1>SGPA Calculator - Semester 4</h1>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%;"></div>
+            </div>
+        </header>
+
+        <div class="form-container">
+            <div class="form-header">
+                <h2><i class="fas fa-pen"></i> ENTER MARKS for Semester 4</h2>
+                <div class="info-tooltip">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="tooltip-text">Enter your marks out of the maximum shown for each subject</span>
+                </div>
+            </div>
+            
+            <form id="sem4Form">
+                <div class="subject-group">
+                    <div class="subject">
+                        <label for="AT">AT (Out of 100)</label>
+                        <div class="input-container">
+                            <input type="number" id="AT" min="0" max="100" required>
+                            <span class="input-suffix">/100</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="DS">DS (Out of 100)</label>
+                        <div class="input-container">
+                            <input type="number" id="DS" min="0" max="100" required>
+                            <span class="input-suffix">/100</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="DSL">DSL (Out of 50)</label>
+                        <div class="input-container">
+                            <input type="number" id="DSL" min="0" max="50" required>
+                            <span class="input-suffix">/50</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="AOOC">AOOC (Out of 100)</label>
+                        <div class="input-container">
+                            <input type="number" id="AOOC" min="0" max="100" required>
+                            <span class="input-suffix">/100</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="MDM">MDM (Out of 50)</label>
+                        <div class="input-container">
+                            <input type="number" id="MDM" min="0" max="50" required>
+                            <span class="input-suffix">/50</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subject-group">
+                    <div class="subject">
+                        <label for="ES">ES (Out of 50)</label>
+                        <div class="input-container">
+                            <input type="number" id="ES" min="0" max="50" required>
+                            <span class="input-suffix">/50</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="TPMS">TPMS (Out of 50)</label>
+                        <div class="input-container">
+                            <input type="number" id="TPMS" min="0" max="50" required>
+                            <span class="input-suffix">/50</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="TTL">TTL (Out of 50)</label>
+                        <div class="input-container">
+                            <input type="number" id="TTL" min="0" max="50" required>
+                            <span class="input-suffix">/50</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="OEC">OEC (Out of 50)</label>
+                        <div class="input-container">
+                            <input type="number" id="OEC" min="0" max="50" required>
+                            <span class="input-suffix">/50</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="WD">WD (Out of 50)</label>
+                        <div class="input-container">
+                            <input type="number" id="WD" min="0" max="50" required>
+                            <span class="input-suffix">/50</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button type="button" class="calculate-btn" onclick="calculateSGPA('sem4')">
+                        <i class="fas fa-calculator"></i> Calculate SGPA
+                    </button>
+                    <button id="backToHome" class="home-btn" onclick="window.location.href='index.html'">
+                        <i class="fas fa-home"></i> Back to Home
+                    </button>
+                </div>
+            </form>
+
+            <div id="sem4Result" class="result-container"></div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
