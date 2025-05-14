@@ -5,20 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGPA Calculator</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to SGPA Calculator</h1>
-        <p>Choose a semester to calculate your SGPA:</p>
-    </header>
+    <div class="particles" id="particles-js"></div>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-calculator"></i>
+                <h1>SGPA Calculator</h1>
+            </div>
+            <p>Choose a semester to calculate your SGPA:</p>
+        </header>
 
-    <div class="semester-options">
-        <button onclick="window.location.href='sem1.html'">Semester 1</button>
-        <button onclick="window.location.href='sem2.html'">Semester 2</button>
+        <div class="semester-options">
+            <button class="sem-btn" onclick="window.location.href='sem1.html'">
+                <span>Semester 1</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="sem-btn" onclick="window.location.href='sem2.html'">
+                <span>Semester 2</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="sem-btn" onclick="window.location.href='sem3.html'">
+                <span>Semester 3</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="sem-btn" onclick="window.location.href='sem4.html'">
+                <span>Semester 4</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 SGPA Calculator | <a href="#" id="theme-toggle">Toggle Dark Mode</a></p>
+            <p>Made with &hearts; by Shubham Pattewar</a></p>
+        </footer>
     </div>
 
-    <footer>
-        <p>&copy; 2024 SGPA Calculator</p>
-    </footer>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Particles.js config
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#3a86ff"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": true
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#3a86ff",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        }
+                    }
+                }
+            });
+
+            // Theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+            });
+
+            // Check for saved theme preference
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+    </script>
 </body>
 </html>
