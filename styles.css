@@ -1,104 +1,503 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
+/* Base Styles */
+:root {
+    --primary-color: #3a86ff;
+    --secondary-color: #8338ec;
+    --accent-color: #ff006e;
+    --success-color: #06d6a0;
+    --warning-color: #ffbe0b;
+    --danger-color: #ef476f;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --gray-color: #6c757d;
+    --bg-color: #ffffff;
+    --text-color: #212529;
+    --card-bg: #ffffff;
+    --input-bg: #f8f9fa;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
 }
 
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: #f8f9fa;
+    --card-bg: #1e1e1e;
+    --input-bg: #2d2d2d;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: var(--transition);
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Particles.js */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.3;
+}
+
+.dark-mode .particles {
+    opacity: 0.1;
+}
+
+/* Header Styles */
 header {
-    background-color: #2c3e50;
-    padding: 15px 0;
     text-align: center;
-    color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.logo i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
 }
 
 h1 {
-    margin: 0;
-    font-size: 2em;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-button {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-}
-
-button:hover {
-    background-color: #2980b9;
-}
-
-footer {
-    background-color: #2c3e50;
-    color: white;
-    text-align: center;
-    padding: 5px;
-    position: fixed;
-    bottom: 0;
+/* Progress Bar */
+.progress-bar {
     width: 100%;
+    height: 8px;
+    background-color: var(--input-bg);
+    border-radius: 4px;
+    margin: 1rem 0;
+    overflow: hidden;
 }
 
-/* Home Page Styles */
-.semester-options {
-    text-align: center;
-    margin-top: 50px;
-}
-
-.semester-options button {
-    background-color: #2ecc71;
-    margin: 10px;
-    padding: 15px 30px;
-    font-size: 18px;
-    border-radius: 8px;
-}
-
-.semester-options button:hover {
-    background-color: #27ae60;
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 4px;
+    transition: width 0.5s ease;
 }
 
 /* Form Container */
 .form-container {
-    padding: 20px;
-    margin: 0 auto;
-    max-width: 800px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
 }
 
-/* Subject Styles */
-.subject {
-    margin-bottom: 15px;
+.form-header {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.form-header h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.info-tooltip {
+    position: relative;
+    cursor: pointer;
+}
+
+.info-tooltip i {
+    color: var(--gray-color);
+    font-size: 1.2rem;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: var(--dark-color);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9rem;
+}
+
+.info-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Subject Inputs */
+.subject-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.subject {
+    margin-bottom: 1rem;
+}
+
+.subject label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.input-container {
+    position: relative;
+    display: flex;
     align-items: center;
 }
 
-label {
-    font-size: 16px;
-    margin-right: 15px;
+.input-container input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    transition: var(--transition);
     flex: 1;
 }
 
-input[type="number"] {
-    padding: 8px;
-    width: 40%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+.input-container input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
 }
 
-/* Result Section */
-#sem1Result, #sem2Result {
-    margin-top: 20px;
-    font-size: 18px;
+.input-container input.invalid {
+    border-color: var(--danger-color);
+}
+
+.input-suffix {
+    position: absolute;
+    right: 1rem;
+    color: var(--gray-color);
+    pointer-events: none;
+}
+
+/* Buttons */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.calculate-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+.calculate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(58, 134, 255, 0.2);
+}
+
+.home-btn {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+}
+
+.home-btn:hover {
+    background-color: var(--gray-color);
+    color: white;
+}
+
+.sem-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 1rem 2rem;
+    margin: 0.5rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow);
+}
+
+.sem-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(58, 134, 255, 0.3);
+}
+
+.semester-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+/* Result Container */
+.result-container {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.result-container.show-result {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sgpa-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.sgpa-circle {
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+.circular-chart {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: var(--input-bg);
+    stroke-width: 3;
+}
+
+.circle-fill {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 3;
+    stroke-linecap: round;
+    animation: circle-fill-animation 1.5s ease-in-out forwards;
+}
+
+@keyframes circle-fill-animation {
+    0% {
+        stroke-dasharray: 0, 100;
+    }
+}
+
+.percentage {
+    font-size: 0.6em;
+    text-anchor: middle;
+    fill: var(--text-color);
     font-weight: bold;
-    color: #2c3e50;
+}
+
+.label {
+    font-size: 0.3em;
+    text-anchor: middle;
+    fill: var(--gray-color);
+    text-transform: uppercase;
+}
+
+.grade-details {
+    width: 100%;
+}
+
+.grade-details h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.grade-details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.grade-details th, .grade-details td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--input-bg);
+}
+
+.grade-details th {
+    background-color: var(--input-bg);
+    font-weight: 600;
+}
+
+.grade-O {
+    color: #06d6a0;
+    font-weight: bold;
+}
+
+.grade-Aplus {
+    color: #48cae4;
+    font-weight: bold;
+}
+
+.grade-A {
+    color: #3a86ff;
+    font-weight: bold;
+}
+
+.grade-Bplus {
+    color: #8338ec;
+    font-weight: bold;
+}
+
+.grade-B {
+    color: #ff006e;
+    font-weight: bold;
+}
+
+.grade-C {
+    color: #ffbe0b;
+    font-weight: bold;
+}
+
+.grade-P {
+    color: #ff9e00;
+    font-weight: bold;
+}
+
+.grade-F {
+    color: #ef476f;
+    font-weight: bold;
+}
+
+.error {
+    color: var(--danger-color);
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(239, 71, 111, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid var(--danger-color);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--gray-color);
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .form-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .subject-group {
+        grid-template-columns: 1fr;
+    }
+
+    .button-container {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .semester-options {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sem-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .tooltip-text {
+        width: 150px;
+        font-size: 0.8rem;
+    }
 }
