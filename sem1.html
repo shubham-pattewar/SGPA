@@ -5,63 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGPA Calculator - Semester 1</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>SGPA Calculator - Semester 1</h1>
-    </header>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-calculator"></i>
+                <h1>SGPA Calculator - Semester 1</h1>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 25%;"></div>
+            </div>
+        </header>
 
-    <div class="form-container">
-        <h2>ENTER MARKS for Semester 1</h2>
-        <form id="sem1Form">
-            <div class="subject">
-                <label for="LAC">LAC (Out of 100)</label>
-                <input type="number" id="LAC" name="LAC" required>
+        <div class="form-container">
+            <div class="form-header">
+                <h2><i class="fas fa-pen"></i> ENTER MARKS for Semester 1</h2>
+                <div class="info-tooltip">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="tooltip-text">Enter your marks out of the maximum shown for each subject</span>
+                </div>
             </div>
-            <div class="subject">
-                <label for="AP">AP (Out of 100)</label>
-                <input type="number" id="AP" name="AP" required>
-            </div>
-            <div class="subject">
-                <label for="CPP">CPP (Out of 100)</label>
-                <input type="number" id="CPP" name="CPP" required>
-            </div>
-            <div class="subject">
-                <label for="ECM">ECM (Out of 100)</label>
-                <input type="number" id="ECM" name="ECM" required>
-            </div>
-            <div class="subject">
-                <label for="DTI">DTI (Out of 25)</label>
-                <input type="number" id="DTI" name="DTI" required>
-            </div>
-            <div class="subject">
-                <label for="IKS">IKS (Out of 50)</label>
-                <input type="number" id="IKS" name="IKS" required>
-            </div>
-            <div class="subject">
-                <label for="APLab">AP Lab (Out of 25)</label>
-                <input type="number" id="APLab" name="APLab" required>
-            </div>
-            <div class="subject">
-                <label for="CPPLab">CPP Lab (Out of 25)</label>
-                <input type="number" id="CPPLab" name="CPPLab" required>
-            </div>
-            <div class="subject">
-                <label for="ECMLab">ECM Lab (Out of 25)</label>
-                <input type="number" id="ECMLab" name="ECMLab" required>
-            </div>
-            <div class="subject">
-                <label for="DTILab">DTI Lab (Out of 25)</label>
-                <input type="number" id="DTILab" name="DTILab" required>
-            </div>
+            
+            <form id="sem1Form">
+                <div class="subject-group">
+                    <div class="subject">
+                        <label for="LAC">LAC (Out of 100)</label>
+                        <div class="input-container">
+                            <input type="number" id="LAC" name="LAC" min="0" max="100" required>
+                            <span class="input-suffix">/100</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="AP">AP (Out of 100)</label>
+                        <div class="input-container">
+                            <input type="number" id="AP" name="AP" min="0" max="100" required>
+                            <span class="input-suffix">/100</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="CPP">CPP (Out of 100)</label>
+                        <div class="input-container">
+                            <input type="number" id="CPP" name="CPP" min="0" max="100" required>
+                            <span class="input-suffix">/100</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="ECM">ECM (Out of 100)</label>
+                        <div class="input-container">
+                            <input type="number" id="ECM" name="ECM" min="0" max="100" required>
+                            <span class="input-suffix">/100</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="DTI">DTI (Out of 25)</label>
+                        <div class="input-container">
+                            <input type="number" id="DTI" name="DTI" min="0" max="25" required>
+                            <span class="input-suffix">/25</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subject-group">
+                    <div class="subject">
+                        <label for="IKS">IKS (Out of 50)</label>
+                        <div class="input-container">
+                            <input type="number" id="IKS" name="IKS" min="0" max="50" required>
+                            <span class="input-suffix">/50</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="APLab">AP Lab (Out of 25)</label>
+                        <div class="input-container">
+                            <input type="number" id="APLab" name="APLab" min="0" max="25" required>
+                            <span class="input-suffix">/25</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="CPPLab">CPP Lab (Out of 25)</label>
+                        <div class="input-container">
+                            <input type="number" id="CPPLab" name="CPPLab" min="0" max="25" required>
+                            <span class="input-suffix">/25</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="ECMLab">ECM Lab (Out of 25)</label>
+                        <div class="input-container">
+                            <input type="number" id="ECMLab" name="ECMLab" min="0" max="25" required>
+                            <span class="input-suffix">/25</span>
+                        </div>
+                    </div>
+                    <div class="subject">
+                        <label for="DTILab">DTI Lab (Out of 25)</label>
+                        <div class="input-container">
+                            <input type="number" id="DTILab" name="DTILab" min="0" max="25" required>
+                            <span class="input-suffix">/25</span>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="button-container">
-                <button type="button" onclick="calculateSGPA('sem1')">Calculate SGPA</button>
-                <button id="backToHome" onclick="window.location.href='index.html'">Back to Home</button>
-            </div>
-        </form>
+                <div class="button-container">
+                    <button type="button" class="calculate-btn" onclick="calculateSGPA('sem1')">
+                        <i class="fas fa-calculator"></i> Calculate SGPA
+                    </button>
+                    <button id="backToHome" class="home-btn" onclick="window.location.href='index.html'">
+                        <i class="fas fa-home"></i> Back to Home
+                    </button>
+                </div>
+            </form>
 
-        <div id="sem1Result"></div>
+            <div id="sem1Result" class="result-container"></div>
+        </div>
     </div>
 
     <script src="scripts.js"></script>
