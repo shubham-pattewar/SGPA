@@ -1,131 +1,503 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SGPA Calculator - Semester 2</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <div class="logo">
-                <i class="fas fa-calculator"></i>
-                <h1>SGPA Calculator - Semester 2</h1>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill" style="width: 50%;"></div>
-            </div>
-        </header>
+/* Base Styles */
+:root {
+    --primary-color: #3a86ff;
+    --secondary-color: #8338ec;
+    --accent-color: #ff006e;
+    --success-color: #06d6a0;
+    --warning-color: #ffbe0b;
+    --danger-color: #ef476f;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --gray-color: #6c757d;
+    --bg-color: #ffffff;
+    --text-color: #212529;
+    --card-bg: #ffffff;
+    --input-bg: #f8f9fa;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
 
-        <div class="form-container">
-            <div class="form-header">
-                <h2><i class="fas fa-pen"></i> ENTER MARKS for Semester 2</h2>
-                <div class="info-tooltip">
-                    <i class="fas fa-info-circle"></i>
-                    <span class="tooltip-text">Enter your marks out of the maximum shown for each subject</span>
-                </div>
-            </div>
-            
-            <form id="sem2Form">
-                <div class="subject-group">
-                    <div class="subject">
-                        <label for="DET">DET (Out of 100)</label>
-                        <div class="input-container">
-                            <input type="number" id="DET" name="DET" min="0" max="100" required>
-                            <span class="input-suffix">/100</span>
-                        </div>
-                    </div>
-                    <div class="subject">
-                        <label for="AC">AC (Out of 100)</label>
-                        <div class="input-container">
-                            <input type="number" id="AC" name="AC" min="0" max="100" required>
-                            <span class="input-suffix">/100</span>
-                        </div>
-                    </div>
-                    <div class="subject">
-                        <label for="EEE">EEE (Out of 100)</label>
-                        <div class="input-container">
-                            <input type="number" id="EEE" name="EEE" min="0" max="100" required>
-                            <span class="input-suffix">/100</span>
-                        </div>
-                    </div>
-                    <div class="subject">
-                        <label for="CAD">CAD (Out of 100)</label>
-                        <div class="input-container">
-                            <input type="number" id="CAD" name="CAD" min="0" max="100" required>
-                            <span class="input-suffix">/100</span>
-                        </div>
-                    </div>
-                    <div class="subject">
-                        <label for="PC">PC (Out of 25)</label>
-                        <div class="input-container">
-                            <input type="number" id="PC" name="PC" min="0" max="25" required>
-                            <span class="input-suffix">/25</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="subject-group">
-                    <div class="subject">
-                        <label for="ACLab">AC Lab (Out of 25)</label>
-                        <div class="input-container">
-                            <input type="number" id="ACLab" name="ACLab" min="0" max="25" required>
-                            <span class="input-suffix">/25</span>
-                        </div>
-                    </div>
-                    <div class="subject">
-                        <label for="EEELab">EEE Lab (Out of 25)</label>
-                        <div class="input-container">
-                            <input type="number" id="EEELab" name="EEELab" min="0" max="25" required>
-                            <span class="input-suffix">/25</span>
-                        </div>
-                    </div>
-                    <div class="subject">
-                        <label for="CADLab">CAD Lab (Out of 25)</label>
-                        <div class="input-container">
-                            <input type="number" id="CADLab" name="CADLab" min="0" max="25" required>
-                            <span class="input-suffix">/25</span>
-                        </div>
-                    </div>
-                    <div class="subject">
-                        <label for="PCLab">PC Lab (Out of 25)</label>
-                        <div class="input-container">
-                            <input type="number" id="PCLab" name="PCLab" min="0" max="25" required>
-                            <span class="input-suffix">/25</span>
-                        </div>
-                    </div>
-                    <div class="subject">
-                        <label for="LLC">LLC (Out of 50)</label>
-                        <div class="input-container">
-                            <input type="number" id="LLC" name="LLC" min="0" max="50" required>
-                            <span class="input-suffix">/50</span>
-                        </div>
-                    </div>
-                    <div class="subject">
-                        <label for="PCC">PCC (Out of 50)</label>
-                        <div class="input-container">
-                            <input type="number" id="PCC" name="PCC" min="0" max="50" required>
-                            <span class="input-suffix">/50</span>
-                        </div>
-                    </div>
-                </div>
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: #f8f9fa;
+    --card-bg: #1e1e1e;
+    --input-bg: #2d2d2d;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
 
-                <div class="button-container">
-                    <button type="button" class="calculate-btn" onclick="calculateSGPA('sem2')">
-                        <i class="fas fa-calculator"></i> Calculate SGPA
-                    </button>
-                    <button id="backToHome" class="home-btn" onclick="window.location.href='index.html'">
-                        <i class="fas fa-home"></i> Back to Home
-                    </button>
-                </div>
-            </form>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-            <div id="sem2Result" class="result-container"></div>
-        </div>
-    </div>
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: var(--transition);
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
 
-    <script src="scripts.js"></script>
-</body>
-</html>
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Particles.js */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.3;
+}
+
+.dark-mode .particles {
+    opacity: 0.1;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.logo i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: var(--input-bg);
+    border-radius: 4px;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+/* Form Container */
+.form-container {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.form-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.form-header h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.info-tooltip {
+    position: relative;
+    cursor: pointer;
+}
+
+.info-tooltip i {
+    color: var(--gray-color);
+    font-size: 1.2rem;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: var(--dark-color);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9rem;
+}
+
+.info-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Subject Inputs */
+.subject-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.subject {
+    margin-bottom: 1rem;
+}
+
+.subject label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    transition: var(--transition);
+    flex: 1;
+}
+
+.input-container input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
+}
+
+.input-container input.invalid {
+    border-color: var(--danger-color);
+}
+
+.input-suffix {
+    position: absolute;
+    right: 1rem;
+    color: var(--gray-color);
+    pointer-events: none;
+}
+
+/* Buttons */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.calculate-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+.calculate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(58, 134, 255, 0.2);
+}
+
+.home-btn {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+}
+
+.home-btn:hover {
+    background-color: var(--gray-color);
+    color: white;
+}
+
+.sem-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 1rem 2rem;
+    margin: 0.5rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow);
+}
+
+.sem-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(58, 134, 255, 0.3);
+}
+
+.semester-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+/* Result Container */
+.result-container {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.result-container.show-result {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sgpa-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.sgpa-circle {
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+.circular-chart {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: var(--input-bg);
+    stroke-width: 3;
+}
+
+.circle-fill {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 3;
+    stroke-linecap: round;
+    animation: circle-fill-animation 1.5s ease-in-out forwards;
+}
+
+@keyframes circle-fill-animation {
+    0% {
+        stroke-dasharray: 0, 100;
+    }
+}
+
+.percentage {
+    font-size: 0.6em;
+    text-anchor: middle;
+    fill: var(--text-color);
+    font-weight: bold;
+}
+
+.label {
+    font-size: 0.3em;
+    text-anchor: middle;
+    fill: var(--gray-color);
+    text-transform: uppercase;
+}
+
+.grade-details {
+    width: 100%;
+}
+
+.grade-details h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.grade-details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.grade-details th, .grade-details td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--input-bg);
+}
+
+.grade-details th {
+    background-color: var(--input-bg);
+    font-weight: 600;
+}
+
+.grade-O {
+    color: #06d6a0;
+    font-weight: bold;
+}
+
+.grade-Aplus {
+    color: #48cae4;
+    font-weight: bold;
+}
+
+.grade-A {
+    color: #3a86ff;
+    font-weight: bold;
+}
+
+.grade-Bplus {
+    color: #8338ec;
+    font-weight: bold;
+}
+
+.grade-B {
+    color: #ff006e;
+    font-weight: bold;
+}
+
+.grade-C {
+    color: #ffbe0b;
+    font-weight: bold;
+}
+
+.grade-P {
+    color: #ff9e00;
+    font-weight: bold;
+}
+
+.grade-F {
+    color: #ef476f;
+    font-weight: bold;
+}
+
+.error {
+    color: var(--danger-color);
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(239, 71, 111, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid var(--danger-color);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--gray-color);
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .form-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .subject-group {
+        grid-template-columns: 1fr;
+    }
+
+    .button-container {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .semester-options {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sem-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .tooltip-text {
+        width: 150px;
+        font-size: 0.8rem;
+    }
+}
