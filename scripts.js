@@ -26,6 +26,7 @@ function calculateSGPA(semester) {
             { name: 'DTILab', credits: 1, maxMarks: 25 }
         ];
         resultElement = document.getElementById('sem1Result');
+
     } else if (semester === 'sem2') {
         subjects = [
             { name: 'DET', credits: 4, maxMarks: 100 },
@@ -41,6 +42,7 @@ function calculateSGPA(semester) {
             { name: 'PCC', credits: 2, maxMarks: 50 }
         ];
         resultElement = document.getElementById('sem2Result');
+
     } else if (semester === 'sem3') {
         subjects = [
             { name: 'DMS', credits: 3, maxMarks: 100 },
@@ -54,6 +56,7 @@ function calculateSGPA(semester) {
             { name: 'IPR', credits: 2, maxMarks: 50 }
         ];
         resultElement = document.getElementById('sem3Result');
+
     } else if (semester === 'sem4') {
         subjects = [
             { name: 'AT', credits: 3, maxMarks: 100 },
@@ -68,15 +71,28 @@ function calculateSGPA(semester) {
             { name: 'WD', credits: 2, maxMarks: 50 }
         ];
         resultElement = document.getElementById('sem4Result');
+
+    } else if (semester === 'sem5') {
+        subjects = [
+            { name: 'CC', credits: 3, maxMarks: 100 },
+            { name: 'CCL', credits: 1, maxMarks: 50 },
+            { name: 'DAA', credits: 3, maxMarks: 100 },
+            { name: 'APC', credits: 3, maxMarks: 100 },
+            { name: 'AJT', credits: 2, maxMarks: 50 },
+            { name: 'MDM', credits: 4, maxMarks: 125 },
+            { name: 'OEC', credits: 2, maxMarks: 50 },
+            { name: 'PEC', credits: 4, maxMarks: 125 }
+        ];
+        resultElement = document.getElementById('sem5Result');
     }
 
     const form = document.getElementById(`${semester}Form`);
     const inputs = form.querySelectorAll('input');
     let allValid = true;
 
-    // Validate inputs
+    // Validation
     inputs.forEach(input => {
-        const max = parseFloat(input.getAttribute('max') || 100);
+        const max = parseFloat(input.getAttribute('max')) || 100;
         if (parseFloat(input.value) > max) {
             input.classList.add('invalid');
             allValid = false;
@@ -86,42 +102,62 @@ function calculateSGPA(semester) {
     });
 
     if (!allValid) {
-        resultElement.innerHTML = '<div class="error">Please enter valid marks (below max marks for each subject)</div>';
+        resultElement.innerHTML =
+            '<div class="error">Please enter valid marks (within maximum limits)</div>';
         return;
     }
 
     let totalCredits = 0;
     let weightedGradePoints = 0;
     let i = 0;
-    let resultsHTML = '<div class="grade-details"><h3>Subject-wise Grades:</h3><table><tr><th>Subject</th><th>Grade</th><th>Points</th></tr>';
+
+    let resultsHTML = `
+        <div class="grade-details">
+            <h3>Subject-wise Grades:</h3>
+            <table>
+                <tr>
+                    <th>Subject</th>
+                    <th>Grade</th>
+                    <th>Points</th>
+                </tr>
+    `;
 
     subjects.forEach(subject => {
         const marks = parseFloat(inputs[i].value);
         const percentage = (marks / subject.maxMarks) * 100;
         const { grade, point } = getGradePoint(percentage);
+
         totalCredits += subject.credits;
         weightedGradePoints += point * subject.credits;
-        
-        resultsHTML += `<tr>
-            <td>${subject.name}</td>
-            <td class="grade-${grade}">${grade}</td>
-            <td>${point.toFixed(1)}</td>
-        </tr>`;
+
+        resultsHTML += `
+            <tr>
+                <td>${subject.name}</td>
+                <td class="grade-${grade}">${grade}</td>
+                <td>${point.toFixed(1)}</td>
+            </tr>
+        `;
         i++;
     });
 
     const sgpa = weightedGradePoints / totalCredits;
     resultsHTML += `</table></div>`;
-    
-    // Add animation class
+
     resultElement.classList.add('show-result');
-    
+
     resultElement.innerHTML = `
         <div class="sgpa-result">
             <div class="sgpa-circle">
                 <svg viewBox="0 0 36 36" class="circular-chart">
-                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                    <path class="circle-fill" stroke-dasharray="${(sgpa/10)*100}, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle-bg"
+                        d="M18 2.0845
+                        a 15.9155 15.9155 0 0 1 0 31.831
+                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                    <path class="circle-fill"
+                        stroke-dasharray="${(sgpa / 10) * 100}, 100"
+                        d="M18 2.0845
+                        a 15.9155 15.9155 0 0 1 0 31.831
+                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
                     <text x="18" y="20.5" class="percentage">${sgpa.toFixed(2)}</text>
                     <text x="18" y="25" class="label">SGPA</text>
                 </svg>
@@ -130,15 +166,13 @@ function calculateSGPA(semester) {
         </div>
     `;
 
-    // Scroll to result
     resultElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-// Add input validation on blur
-document.addEventListener('DOMContentLoaded', function() {
-    const inputs = document.querySelectorAll('input[type="number"]');
-    inputs.forEach(input => {
-        input.addEventListener('blur', function() {
+// Live validation
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('input[type="number"]').forEach(input => {
+        input.addEventListener('blur', function () {
             const max = parseFloat(this.getAttribute('max')) || 100;
             if (parseFloat(this.value) > max) {
                 this.classList.add('invalid');
