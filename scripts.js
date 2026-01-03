@@ -84,6 +84,19 @@ function calculateSGPA(semester) {
             { name: 'PEC', credits: 4, maxMarks: 125 }
         ];
         resultElement = document.getElementById('sem5Result');
+        
+    } else if (semester === 'sem6') {
+        subjects = [
+            { name: 'CD', credits: 3, maxMarks: 100 },
+            { name: 'SD', credits: 3, maxMarks: 100 },
+            { name: 'SDL', credits: 1, maxMarks: 50 },
+            { name: 'SC', credits: 3, maxMarks: 100 },
+            { name: 'MDM', credits: 2, maxMarks: 50 },
+            { name: 'PEC2', credits: 4, maxMarks: 125 },
+            { name: 'PEC3', credits: 4, maxMarks: 125 },
+            { name: 'VSEC', credits: 2, maxMarks: 50 }
+        ];
+        resultElement = document.getElementById('sem6Result');
     }
 
     const form = document.getElementById(`${semester}Form`);
@@ -182,3 +195,4 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
